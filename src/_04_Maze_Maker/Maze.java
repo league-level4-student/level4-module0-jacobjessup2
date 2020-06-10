@@ -11,7 +11,7 @@ Cell[][] cells;
 		this.width = w;
 		this.height = h;
 
-		//2. Initialize the cells using the width and height varibles
+		//2. Initialize the cells using the width and height variables
 		cells = new Cell [width][height];
 		//3. Iterated through each cell and initialize it
 		//   using i and j as the location
@@ -33,7 +33,7 @@ Cell[][] cells;
 	
 	//4b. This method returns the selected cell.
 	public Cell getCell(int x, int y){
-		return  cells[x][y];
+		return cells[x][y];
 	}
 
 	public int getWidth() {
