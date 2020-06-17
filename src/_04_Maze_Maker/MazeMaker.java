@@ -97,14 +97,14 @@ public class MazeMaker{
 		if(c.getX() != maze.getWidth()-1 && maze.getCell(c.getX()+1, c.getY()).hasBeenVisited() == false) {
 			list.add(maze.getCell(c.getX()+1, c.getY()));
 		}
-		else if(c.getX() != 0 && maze.getCell(c.getX()-1, c.getY()).hasBeenVisited() == false) {
+		if(c.getX() != 0 && maze.getCell(c.getX()-1, c.getY()).hasBeenVisited() == false) {
 			list.add(maze.getCell(c.getX()-1, c.getY()));
 		}
-		else if(c.getY() != maze.getHeight()-1 && maze.getCell(c.getX(), c.getY()-1).hasBeenVisited() == false) {
-			list.add(maze.getCell(c.getX(), c.getY()-1));
-		}
-		else if(c.getY() != 0 && maze.getCell(c.getX(), c.getY()+1).hasBeenVisited() == false) {
+		if(c.getY() != maze.getHeight()-1 && maze.getCell(c.getX(), c.getY()+1).hasBeenVisited() == false) {
 			list.add(maze.getCell(c.getX(), c.getY()+1));
+		}
+		if(c.getY() != 0 && maze.getCell(c.getX(), c.getY()-1).hasBeenVisited() == false) {
+			list.add(maze.getCell(c.getX(), c.getY()-1));
 		}
 		return list;
 	}

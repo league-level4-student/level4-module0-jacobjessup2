@@ -46,11 +46,54 @@ public class TheWrongWayCow {
     public static int[] findWrongWayCow(final char[][] field) {
         // Fill in the code to return the x,y coordinate position of the
         // head (letter 'c') of the wrong way cow!
+    	int forward = 0;
+    	int[] forarr = new int[2];
+    	int back = 0;
+    	int[] backarr = new int[2];
+    	int up = 0;
+    	int[] uparr = new int[2];
+    	int down = 0;
+    	int[] downarr = new int[2];
         for (int i = 0; i < field.length; i++) {
-			for (int j = 0; j < field.length; j++) {
-				
+			for (int j = 0; j < field[i].length; j++) {
+				if((i != field.length-3 || i != field.length-2 || i !=field.length-1) && "" + field[i][j] + field[i+1][j] + field[i+2][j] == "cow") {
+					forward++;
+					if(forward == 1) {
+						forarr = new int[]{i,j};
+					}
+				}
+				if((i != 3 || i != 2 || i != 1) && "" + field[i][j] + field[i-1][j] + field[i-2][j] == "cow") {
+					back++;
+					if(back == 1) {
+						backarr = new int[]{i,j};
+					}
+				}
+				if((j != field[i].length-3 || j != field[i].length-2 || j != field[i].length-1) && "" + field[i][j] + field[i][j+1] + field[i][j+2] == "cow") {
+					up++;
+					if(up == 1) {
+						uparr = new int[]{i,j};
+					}
+				}
+				if((j != 3 || j != 2 || j != 1) && "" + field[i][j] + field[i][j-1] + field[i][j-2] == "cow") {
+					down++;
+					if(down == 1) {
+						downarr = new int[]{i,j};
+					}
+				}
 			}
 		}
+        if(forward == 1) {
+        	return forarr;
+        }
+        if(back == 1) {
+        	return backarr;
+        }
+        if(up == 1) {
+        	return uparr;
+        }
+        if(down == 1) {
+        	return downarr;
+        }
         return null;
     }
 }
