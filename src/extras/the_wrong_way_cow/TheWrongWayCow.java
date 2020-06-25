@@ -48,50 +48,63 @@ public class TheWrongWayCow {
         // head (letter 'c') of the wrong way cow!
     	int forward = 0;
     	int[] forarr = new int[2];
+    	int f1 = 0;
+    	int f2 = 0;
     	int back = 0;
     	int[] backarr = new int[2];
+    	int b1 = 0;
+    	int b2 = 0;
     	int up = 0;
     	int[] uparr = new int[2];
+    	int u1 = 0;
+    	int u2 = 0;
     	int down = 0;
     	int[] downarr = new int[2];
+    	int d1 = 0;
+    	int d2 = 0;
         for (int i = 0; i < field.length; i++) {
 			for (int j = 0; j < field[i].length; j++) {
-				if((i != field.length-3 || i != field.length-2 || i !=field.length-1) && "" + field[i][j] + field[i+1][j] + field[i+2][j] == "cow") {
+				if(i < field.length-2  && ("" + field[i][j] + field[i+1][j] + field[i+2][j]).equals("cow")) {
 					forward++;
-					if(forward == 1) {
-						forarr = new int[]{i,j};
-					}
+					f1 = j;
+					f2 = i;
 				}
-				if((i != 3 || i != 2 || i != 1) && "" + field[i][j] + field[i-1][j] + field[i-2][j] == "cow") {
+				if(i > 2 && ("" + field[i][j] + field[i-1][j] + field[i-2][j]).equals("cow")) {
 					back++;
-					if(back == 1) {
-						backarr = new int[]{i,j};
-					}
+					b1 = j;
+					b2 = i;
 				}
-				if((j != field[i].length-3 || j != field[i].length-2 || j != field[i].length-1) && "" + field[i][j] + field[i][j+1] + field[i][j+2] == "cow") {
+				if(j < field[i].length-2 && ("" + field[i][j] + field[i][j+1] + field[i][j+2]).equals( "cow")) {
 					up++;
-					if(up == 1) {
-						uparr = new int[]{i,j};
-					}
+					u1 = j;
+					u2 = i;
 				}
-				if((j != 3 || j != 2 || j != 1) && "" + field[i][j] + field[i][j-1] + field[i][j-2] == "cow") {
+				if(j > 2 && ("" + field[i][j] + field[i][j-1] + field[i][j-2]).equals( "cow")) {
 					down++;
-					if(down == 1) {
-						downarr = new int[]{i,j};
-					}
+					d1 = j;
+					d2 = i;
+					
 				}
 			}
 		}
         if(forward == 1) {
+        	forarr[0] = f1;
+        	forarr[1] = f2;
         	return forarr;
         }
-        if(back == 1) {
+        else if(back == 1) {
+        	backarr[0] = b1;
+        	backarr[1] = b2;
         	return backarr;
         }
-        if(up == 1) {
+        else if(up == 1) {
+        	uparr[0] = u1;
+        	uparr[1] = u2;
         	return uparr;
         }
-        if(down == 1) {
+        else if(down == 1) {
+        	downarr [0] = d1;
+        	downarr [1] = d2;
         	return downarr;
         }
         return null;
